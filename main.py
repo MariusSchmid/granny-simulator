@@ -1,4 +1,6 @@
 import os
+import subprocess
+import sys
 import webbrowser
 import hotkey_manager as hkm
 
@@ -21,6 +23,7 @@ def open_youtube():
 
 def escape_all():
     os.system("taskkill /IM chrome.exe /F")
+    subprocess.Popen(["cmd", "/c", "start", "python", sys.argv[0]], shell=True)
     print("exit")
 
 def main():
