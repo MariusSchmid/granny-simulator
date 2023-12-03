@@ -1,12 +1,5 @@
 import webbrowser
-import threading
-from pynput import keyboard
-
-
-def hotkey_thread_function(name):
-    with keyboard.GlobalHotKeys({
-            '<27>': escape_all}) as h: #27 = ESC
-        h.join()
+import hotkey_manager as hkm
 
 
 def menu():
@@ -14,15 +7,11 @@ def menu():
     print("1. Google Suche ")
     print("2. YouTube Video schauen ")
 
-    
-
-
 def open_google():
     print("Google Suche")
     search_query = input("Bitte geben sie ein nach was sie suchen wollen:")
     google_url = f"https://www.google.com/search?q={search_query}"
     webbrowser.open(google_url)
-
 
 def open_youtube():
     search_query = input("Bitte geben sie ein nach was sie suchen wollen:")
@@ -33,9 +22,8 @@ def escape_all():
     print("exit")
 
 def main():
+    hkm.listen_to_hotkeys(escape_all)
 
-    hotkey_thread = threading.Thread(target=hotkey_thread_function, args=(1,))
-    hotkey_thread.start()
     while True:
         menu()
         choice = input("Bitte wählen sie einen Menüpunkt aus!")
