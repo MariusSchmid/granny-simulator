@@ -1,4 +1,5 @@
 import webbrowser
+from pynput import keyboard
 
 def menu():
     print("Menü: ")
@@ -24,7 +25,15 @@ def open_youtube():
 
     webbrowser.open(youtube_url)
 
+def escape_all():
+    print("exit")
+
 def main():
+
+    with keyboard.GlobalHotKeys({
+            'n': escape_all() })  as h:
+        h.join()
+
     while True:
         menu()
         choice = input("Bitte wählen sie einen Menüpunkt aus!")
@@ -33,6 +42,7 @@ def main():
             open_google()
         elif choice == "2":
             open_youtube()
+
 
 
 if __name__ == "__main__":
