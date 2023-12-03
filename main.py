@@ -17,7 +17,12 @@ def open_google():
 
 
 def open_youtube():
-    return
+
+    search_query = input("Bitte geben sie ein nach was sie suchen wollen:")
+
+    youtube_url = f"https://www.youtube.com/results?search_query={search_query}"
+
+    webbrowser.open(youtube_url)
 
 def main():
     while True:
