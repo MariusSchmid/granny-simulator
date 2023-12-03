@@ -3,6 +3,7 @@ import subprocess
 import sys
 import webbrowser
 import hotkey_manager as hkm
+import pygetwindow as gw
 
 def menu():
     print("Menü: ")
@@ -30,8 +31,13 @@ def open_youtube():
 
 def escape_all():
     os.system("taskkill /IM chrome.exe /F")
-    subprocess.Popen(["cmd", "/c", "start", "python", sys.argv[0]], shell=True)
-    print("exit")
+    #subprocess.Popen(["cmd", "/c", "start", "python", sys.argv[0]], shell=True)
+
+    allTitles = gw.getAllTitles()
+
+    if any("main" in s for s in allTitles):
+        print("found")
+
 
 def main():
     hkm.listen_to_hotkeys(escape_all)
