@@ -1,3 +1,5 @@
+import webbrowser
+
 def menu():
     print("Menü: ")
     print("1. Google Suche ")
@@ -5,7 +7,14 @@ def menu():
 
 
 def open_google():
-    return
+    print("Google Suche")
+
+    search_query = input("Bitte geben sie ein nach was sie suchen wollen:")
+
+    google_url = f"https://www.google.com/search?q={search_query}"
+
+    webbrowser.open(google_url)
+
 
 def open_youtube():
     return
@@ -19,3 +28,8 @@ def main():
             open_google()
         elif choice == "2":
             open_youtube()
+
+
+if __name__ == "__main__":
+    main()
+
