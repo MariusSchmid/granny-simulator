@@ -5,7 +5,7 @@ import webbrowser
 import hotkey_manager as hkm
 import pygetwindow as gw
 
-def menu():
+def show_menu():
     print("Menü: ")
     print("1. Google Suche ")
     print("2. YouTube Video schauen ")
@@ -35,12 +35,14 @@ def escape_all():
     matching_windows_string = [s for s in all_windows_titles if "main.exe" in s]
     print(matching_windows_string)
     granny_simulator =  gw.getWindowsWithTitle(matching_windows_string[0])[0]
+    os.system('cls')
+    show_menu()
     granny_simulator.maximize()
 
 def main():
     hkm.listen_to_hotkeys(escape_all)
     while True:
-        menu()
+        show_menu()
         choice = input("Bitte wählen sie einen Menüpunkt aus!")
         if choice == "1":
             open_google()
