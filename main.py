@@ -1,3 +1,4 @@
+import os
 import webbrowser
 import hotkey_manager as hkm
 
@@ -19,6 +20,7 @@ def open_youtube():
     webbrowser.open(youtube_url)
 
 def escape_all():
+    os.system("taskkill /IM chrome.exe /F")
     print("exit")
 
 def main():
