@@ -31,18 +31,14 @@ def open_youtube():
 
 def escape_all():
     os.system("taskkill /IM chrome.exe /F")
-    #subprocess.Popen(["cmd", "/c", "start", "python", sys.argv[0]], shell=True)
-
-    allTitles = gw.getAllTitles()
-
-    if any("main" in s for s in allTitles):
-        print("found")
-
+    all_windows_titles = gw.getAllTitles()
+    matching_windows_string = [s for s in all_windows_titles if "main.exe" in s]
+    print(matching_windows_string)
+    granny_simulator =  gw.getWindowsWithTitle(matching_windows_string[0])[0]
+    granny_simulator.maximize()
 
 def main():
     hkm.listen_to_hotkeys(escape_all)
-
-
     while True:
         menu()
         choice = input("Bitte wählen sie einen Menüpunkt aus!")
