@@ -9,6 +9,7 @@ def show_menu():
     print("Menü: ")
     print("1. Google Suche ")
     print("2. YouTube Video schauen ")
+    print("3. WhatsApp ")
 
 
 def open_browser_url(url):
@@ -21,12 +22,12 @@ def open_browser_url(url):
 
 def open_google():
     print("Google Suche")
-    search_query = input("Bitte geben sie ein nach was sie suchen wollen:")
+    search_query = input("Bitte gib ein, nach was du suchen möchtest:")
     open_browser_url(f"https://www.google.com/search?q={search_query}")
 
 
 def open_youtube():
-    search_query = input("Bitte geben sie ein nach was sie suchen wollen:")
+    search_query = input("Bitte gib ein, nach was du suchen möchtest:")
     open_browser_url(f"https://www.youtube.com/results?search_query={search_query}")
 
 def escape_all():
@@ -39,15 +40,21 @@ def escape_all():
     show_menu()
     granny_simulator.maximize()
 
+def open_whatsapp():
+    print("open whatsapp function")
+    return
+
 def main():
     hkm.listen_to_hotkeys(escape_all)
     while True:
         show_menu()
-        choice = input("Bitte wählen sie einen Menüpunkt aus!")
+        choice = input("Bitte wähle einen Menüpunkt aus.")
         if choice == "1":
             open_google()
         elif choice == "2":
             open_youtube()
+        elif choice == "3":
+            open_whatsapp()
 
 
 
