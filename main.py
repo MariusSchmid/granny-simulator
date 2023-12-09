@@ -31,7 +31,8 @@ def open_youtube():
     open_browser_url(f"https://www.youtube.com/results?search_query={search_query}")
 
 def escape_all():
-    os.system("taskkill /IM chrome.exe /F")
+    #os.system("taskkill /IM chrome.exe /F")
+    os.system("taskkill /IM WhatsApp.exe /F")
     all_windows_titles = gw.getAllTitles()
     matching_windows_string = [s for s in all_windows_titles if "main.exe" in s]
     print(matching_windows_string)
@@ -41,8 +42,11 @@ def escape_all():
     granny_simulator.maximize()
 
 def open_whatsapp():
-    print("open whatsapp function")
-    return
+    whatsapp_path = r'C:\\Program Files\\WindowsApps\\5319275A.WhatsAppDesktop_2.2348.4.0_x64__cv1g1gvanyjgm'
+    print(f"this is the path to whatsapp.exe {whatsapp_path}")
+    os.chdir(whatsapp_path)
+    os.system(f'start WhatsApp.exe')
+
 
 def main():
     hkm.listen_to_hotkeys(escape_all)
@@ -55,6 +59,8 @@ def main():
             open_youtube()
         elif choice == "3":
             open_whatsapp()
+        else:
+            print(f"Der Menüpunkt {choice} existiert nicht.")
 
 
 
