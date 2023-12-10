@@ -1,0 +1,9 @@
+version: '2'
+services:
+  weston:
+    build:
+      dockerfile: ./ubuntu_xserver/ubuntu.Dockerfile
+    volumes:
+      - x11tmp:/tmp/.X11-unix
+volumes:
+  x11tmp:
